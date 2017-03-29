@@ -1,0 +1,37 @@
+[
+{
+    "model": "polls.question",
+    "pk": 1,
+    "fields": {
+        "question_text": "Ko je buduci predsjednik Srbije?",
+        "pub_date": "2017-03-28T13:43:39Z"
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 1,
+    "fields": {
+        "question": 1,
+        "choice_text": "Sasa Jankovic",
+        "votes": 3
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 2,
+    "fields": {
+        "question": 1,
+        "choice_text": "Sasa Radulovic",
+        "votes": 5
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 3,
+    "fields": {
+        "question": 1,
+        "choice_text": "Luka Maksimovic",
+        "votes": 3
+    }
+}
+]
