@@ -7,6 +7,10 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+    def get_wining_choice(self):
+        wining_choice = Choice.objects.order_by('-votes')[0]
+        return wining_choice
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
