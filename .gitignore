@@ -95,3 +95,5 @@ ENV/
 
 # My specific
 db.sqlite3
+.idea/workspace.xml
+.idea/tasks.xml
