@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from .models import Question, Choice
+from .models import NoChoicesException
 
 class QuestionMethodTests(TestCase):
     def test_client(self):
@@ -12,6 +13,10 @@ class QuestionMethodTests(TestCase):
         q = Question.objects.create(question_text='This is my text', pub_date=timezone.now())
         c = Choice.objects.create(question=q, choice_text='Simple text', votes=5)
         self.assertIs(q.get_wining_choice().votes, 5)
+
+    def test_get_wining_choice_without_choices_throws_exception(self):
+        q = Question.objects.create(question_text='This is my text', pub_date=timezone.now())
+        self.assertRaises(NoChoicesException, q.get_wining_choice)
 
 class QuestionDatabaseTests(TestCase):
     fixtures = ['polls_views_testdata.json']

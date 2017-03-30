@@ -1,5 +1,7 @@
 from django.db import models
 
+class NoChoicesException(Exception): pass
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -8,7 +10,10 @@ class Question(models.Model):
         return self.question_text
 
     def get_wining_choice(self):
-        wining_choice = Choice.objects.order_by('-votes')[0]
+        orderedChoices = Choice.objects.order_by('-votes')
+        if len(orderedChoices) == 0:
+            raise NoChoicesException('No choices for given question!')
+        wining_choice = orderedChoices[0]
         return wining_choice
 
 class Choice(models.Model):
